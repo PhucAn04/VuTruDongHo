@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 16, 2023 lúc 07:59 AM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Aug 08, 2024 at 06:01 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,34 +18,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `vutrudongho`
+-- Database: `vutrudongho`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
   `AdminID` varchar(4) NOT NULL,
   `FullName` varchar(100) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(255) NOT NULL
+  `Password` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`AdminID`, `FullName`, `Email`, `Password`) VALUES
-('AD01', 'Võ Quang Đăng Khoa', 'dangkhoa1509@gmail.com', '123456'),
-('AD02', 'Võ Văn Hùng', 'vovanhung2864@gmail.com', '123456');
+('AD02', 'Phúc Ân', 'pham27282@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `brand`
+-- Table structure for table `brand`
 --
 
 CREATE TABLE `brand` (
@@ -56,7 +55,7 @@ CREATE TABLE `brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `brand`
+-- Dumping data for table `brand`
 --
 
 INSERT INTO `brand` (`BrandID`, `BrandName`, `Description`, `Status`) VALUES
@@ -73,7 +72,7 @@ INSERT INTO `brand` (`BrandID`, `BrandName`, `Description`, `Status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -82,10 +81,19 @@ CREATE TABLE `cart` (
   `Quantity` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`UserID`, `ProductID`, `Quantity`) VALUES
+('US000011', 'PR000002', 1),
+('US000012', 'PR000001', 1),
+('US000012', 'PR000002', 1);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `inventoryreceivingvoucher`
+-- Table structure for table `inventoryreceivingvoucher`
 --
 
 CREATE TABLE `inventoryreceivingvoucher` (
@@ -98,7 +106,32 @@ CREATE TABLE `inventoryreceivingvoucher` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order`
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `ManagerID` int(11) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Role` varchar(50) DEFAULT 'Manager',
+  `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Status` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`ManagerID`, `Name`, `Email`, `Password`, `Role`, `CreatedAt`, `Status`) VALUES
+(1, 'Phuc An', 'pham27282@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '', '0000-00-00 00:00:00', 1),
+(7, 'An', 'ab@gmail.com', '9adcb29710e807607b683f62e555c22dc5659713', 'Manager', '2024-08-08 02:57:38', 1),
+(8, 'abc', 'abc@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Manager', '2024-08-08 02:58:35', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -115,7 +148,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`OrderID`, `UserID`, `OderDate`, `ShippingFee`, `OrderDiscount`, `OrderTotal`, `Address`, `PaymentID`, `VoucherID`, `OrderStatus`) VALUES
@@ -132,7 +165,7 @@ INSERT INTO `order` (`OrderID`, `UserID`, `OderDate`, `ShippingFee`, `OrderDisco
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orderstatus`
+-- Table structure for table `orderstatus`
 --
 
 CREATE TABLE `orderstatus` (
@@ -141,7 +174,7 @@ CREATE TABLE `orderstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `orderstatus`
+-- Dumping data for table `orderstatus`
 --
 
 INSERT INTO `orderstatus` (`StatusID`, `StatusName`) VALUES
@@ -154,7 +187,7 @@ INSERT INTO `orderstatus` (`StatusID`, `StatusName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_line`
+-- Table structure for table `order_line`
 --
 
 CREATE TABLE `order_line` (
@@ -167,7 +200,7 @@ CREATE TABLE `order_line` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `payment`
+-- Table structure for table `payment`
 --
 
 CREATE TABLE `payment` (
@@ -176,7 +209,7 @@ CREATE TABLE `payment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `payment`
+-- Dumping data for table `payment`
 --
 
 INSERT INTO `payment` (`PaymentID`, `PaymentName`) VALUES
@@ -186,7 +219,7 @@ INSERT INTO `payment` (`PaymentID`, `PaymentName`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -206,7 +239,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`ProductID`, `BrandID`, `ProductName`, `PriceToSell`, `ImportPrice`, `Discount`, `Model`, `Color`, `Gender`, `Description`, `ProductImg`, `Status`, `CanDel`) VALUES
@@ -239,7 +272,7 @@ INSERT INTO `product` (`ProductID`, `BrandID`, `ProductName`, `PriceToSell`, `Im
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product_quantity`
+-- Table structure for table `product_quantity`
 --
 
 CREATE TABLE `product_quantity` (
@@ -249,7 +282,7 @@ CREATE TABLE `product_quantity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product_quantity`
+-- Dumping data for table `product_quantity`
 --
 
 INSERT INTO `product_quantity` (`ProductID`, `Date`, `Quantity`) VALUES
@@ -278,7 +311,7 @@ INSERT INTO `product_quantity` (`ProductID`, `Date`, `Quantity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `receivingdetail`
+-- Table structure for table `receivingdetail`
 --
 
 CREATE TABLE `receivingdetail` (
@@ -289,7 +322,7 @@ CREATE TABLE `receivingdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Bẫy `receivingdetail`
+-- Triggers `receivingdetail`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_receivingdetail_afterdel` AFTER DELETE ON `receivingdetail` FOR EACH ROW update `product` set `CanDel` = 1 where ProductID = old.ProductID and canDel = 0 and ProductID not in (select distinct ProductID from `order_line` where ProductID = old.ProductID) and ProductID not in (select distinct ProductID from `receivingdetail` where ProductID = old.ProductID)
@@ -299,7 +332,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `supplier`
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -312,7 +345,7 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `supplier`
+-- Dumping data for table `supplier`
 --
 
 INSERT INTO `supplier` (`SupplierID`, `Name`, `NumberPhone`, `Address`, `Email`, `Status`) VALUES
@@ -329,7 +362,7 @@ INSERT INTO `supplier` (`SupplierID`, `Name`, `NumberPhone`, `Address`, `Email`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -346,7 +379,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`UserID`, `FullName`, `NumberPhone`, `Email`, `Password`, `HouseRoadAddress`, `Ward`, `District`, `Province`, `Status`) VALUES
@@ -359,12 +392,14 @@ INSERT INTO `user` (`UserID`, `FullName`, `NumberPhone`, `Email`, `Password`, `H
 ('US000007', 'Lê Hồng Cẩm thu', '0327794675', 'camthu@gmail.com', '123456', '1', 'Phường An Hòa', 'Quận Ninh Kiều', 'Thành phố Cần Thơ', 1),
 ('US000008', 'Lê Ngọc Trâm', '0976543678', 'ngoctram567@gmail.com', '123456', '770 CMT8', 'Phường 05', 'Quận Tân Bình', 'Thành phố Hồ Chí Minh', 1),
 ('US000009', 'Phạm Cẩm Thơ', '0976548762', 'camtho234@gmail.com', '123456', '521/91E CMT8', 'Phường 13', 'Quận 10', 'Thành phố Hồ Chí Minh', 1),
-('US000010', 'Đào Công Trứ', '0327794829', 'congtru2865@gmail.com', '123456', 'Đường 19/5', 'Xã Tân Ân', 'Huyện Cần Đước', 'Tỉnh Long An', 1);
+('US000010', 'Đào Công Trứ', '0327794829', 'congtru2865@gmail.com', '123456', 'Đường 19/5', 'Xã Tân Ân', 'Huyện Cần Đước', 'Tỉnh Long An', 1),
+('US000011', 'Phúc Ân', '0123456789', 'pham27282@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '0123', '', '', '', 1),
+('US000012', 'Bình', '0123457689', 'ggbinh123@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '123', '', '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `voucher`
+-- Table structure for table `voucher`
 --
 
 CREATE TABLE `voucher` (
@@ -378,7 +413,7 @@ CREATE TABLE `voucher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `voucher`
+-- Dumping data for table `voucher`
 --
 
 INSERT INTO `voucher` (`VoucherID`, `VoucherName`, `Discount`, `Unit`, `DateFrom`, `DateTo`, `Status`) VALUES
@@ -393,37 +428,44 @@ INSERT INTO `voucher` (`VoucherID`, `VoucherName`, `Discount`, `Unit`, `DateFrom
 ('VO009', 'Quốc tế lao động', 3, '%', '2022-05-01', '2022-05-01', 1);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`AdminID`);
 
 --
--- Chỉ mục cho bảng `brand`
+-- Indexes for table `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`BrandID`);
 
 --
--- Chỉ mục cho bảng `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`UserID`,`ProductID`),
   ADD KEY `FK_ProductID_Cart` (`ProductID`);
 
 --
--- Chỉ mục cho bảng `inventoryreceivingvoucher`
+-- Indexes for table `inventoryreceivingvoucher`
 --
 ALTER TABLE `inventoryreceivingvoucher`
   ADD PRIMARY KEY (`InID`),
   ADD KEY `FK_SupplierID` (`SupplierID`);
 
 --
--- Chỉ mục cho bảng `order`
+-- Indexes for table `manager`
+--
+ALTER TABLE `manager`
+  ADD PRIMARY KEY (`ManagerID`),
+  ADD UNIQUE KEY `Email` (`Email`);
+
+--
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`OrderID`),
@@ -433,81 +475,91 @@ ALTER TABLE `order`
   ADD KEY `FK_Order_PaymentID` (`PaymentID`);
 
 --
--- Chỉ mục cho bảng `orderstatus`
+-- Indexes for table `orderstatus`
 --
 ALTER TABLE `orderstatus`
   ADD PRIMARY KEY (`StatusID`);
 
 --
--- Chỉ mục cho bảng `order_line`
+-- Indexes for table `order_line`
 --
 ALTER TABLE `order_line`
   ADD PRIMARY KEY (`OrderID`,`ProductID`),
   ADD KEY `FK_OrderLine_ProductID` (`ProductID`);
 
 --
--- Chỉ mục cho bảng `payment`
+-- Indexes for table `payment`
 --
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`PaymentID`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`ProductID`),
   ADD KEY `FK_BrandID` (`BrandID`);
 
 --
--- Chỉ mục cho bảng `product_quantity`
+-- Indexes for table `product_quantity`
 --
 ALTER TABLE `product_quantity`
   ADD PRIMARY KEY (`ProductID`,`Date`);
 
 --
--- Chỉ mục cho bảng `receivingdetail`
+-- Indexes for table `receivingdetail`
 --
 ALTER TABLE `receivingdetail`
   ADD PRIMARY KEY (`InID`,`ProductID`),
   ADD KEY `FK_ProductID_Re` (`ProductID`);
 
 --
--- Chỉ mục cho bảng `supplier`
+-- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`SupplierID`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- Chỉ mục cho bảng `voucher`
+-- Indexes for table `voucher`
 --
 ALTER TABLE `voucher`
   ADD PRIMARY KEY (`VoucherID`);
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `cart`
+-- AUTO_INCREMENT for table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `FK_ProductID_Cart` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`),
   ADD CONSTRAINT `FK_UserID` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
 
 --
--- Các ràng buộc cho bảng `inventoryreceivingvoucher`
+-- Constraints for table `inventoryreceivingvoucher`
 --
 ALTER TABLE `inventoryreceivingvoucher`
   ADD CONSTRAINT `FK_SupplierID` FOREIGN KEY (`SupplierID`) REFERENCES `supplier` (`SupplierID`);
 
 --
--- Các ràng buộc cho bảng `order`
+-- Constraints for table `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `FK_Order_PaymentID` FOREIGN KEY (`PaymentID`) REFERENCES `payment` (`PaymentID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -516,26 +568,26 @@ ALTER TABLE `order`
   ADD CONSTRAINT `FK_Order_VoucherID` FOREIGN KEY (`VoucherID`) REFERENCES `voucher` (`VoucherID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Các ràng buộc cho bảng `order_line`
+-- Constraints for table `order_line`
 --
 ALTER TABLE `order_line`
   ADD CONSTRAINT `FK_OrderLine_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `order` (`OrderID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_OrderLine_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `FK_BrandID` FOREIGN KEY (`BrandID`) REFERENCES `brand` (`BrandID`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `product_quantity`
+-- Constraints for table `product_quantity`
 --
 ALTER TABLE `product_quantity`
   ADD CONSTRAINT `FK_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Các ràng buộc cho bảng `receivingdetail`
+-- Constraints for table `receivingdetail`
 --
 ALTER TABLE `receivingdetail`
   ADD CONSTRAINT `FK_InID` FOREIGN KEY (`InID`) REFERENCES `inventoryreceivingvoucher` (`InID`),
