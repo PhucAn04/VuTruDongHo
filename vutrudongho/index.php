@@ -390,5 +390,4 @@ require_once('lib_session.php');
     }
   ?>
 </body>
-
 </html>

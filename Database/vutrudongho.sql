@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `AdminID` varchar(4) NOT NULL,
   `FullName` varchar(100) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(20) NOT NULL
+  `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -337,7 +337,7 @@ CREATE TABLE `user` (
   `FullName` varchar(50) NOT NULL,
   `NumberPhone` varchar(10) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(20) NOT NULL,
+  `Password` varchar(255) NOT NULL,
   `HouseRoadAddress` varchar(50) NOT NULL,
   `Ward` varchar(30) NOT NULL,
   `District` varchar(30) NOT NULL,
