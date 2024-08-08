@@ -40,8 +40,7 @@
                     alert('Email hoặc mật khẩu không hợp lệ!');
                     window.location.href = 'admin-login.php';
                 </script>";
-        }
-        
+        } 
     }
 ?>
 

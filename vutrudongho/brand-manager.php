@@ -1,4 +1,27 @@
 <?php
+// session_start();
+// include './connectdb.php';
+// $user_role = $_SESSION['role']; // giả sử vai trò của người dùng được lưu trong session khi họ đăng nhập
+
+// if ($user_role != 'Manager' && $user_role != 'Admin') {
+//     echo "<script>
+//         alert('Bạn không có quyền truy cập trang này.');
+//         window.location.href = 'product-manage.php';
+//     </script>";
+//     exit;
+// }
+
+session_start();
+
+    // Kiểm tra nếu người dùng chưa đăng nhập hoặc không phải là admin
+    if(!isset($_SESSION['AdminID'])) {
+        echo "<script>
+                alert('Bạn không có quyền truy cập trang này.');
+                window.location.href = 'sidebar.php';
+            </script>";
+        exit();
+    }
+
     //checkBrandName
     function checkBrandName($brand_id, $brand_name) {
         include './connectdb.php';

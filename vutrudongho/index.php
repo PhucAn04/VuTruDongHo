@@ -21,8 +21,8 @@ require_once('lib_session.php');
     data-tag="font">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
-  <script src="sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="sweetalert2.min.css">
+  <!-- <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css"> -->
 </head>
 
 <body>
@@ -177,12 +177,13 @@ require_once('lib_session.php');
 
 
     <div id="casioBrandInfo" style="background-color: rgba(103, 80, 164, 0.4); margin-top: 56px; padding-bottom: 56px;">
-      <!--<p class="bigtitlehome" style="text-align:center ;margin-top: 50px;">SẢN PHẨM BÁN CHẠY</p>-->
+      <!-- <p class="bigtitlehome" style="text-align:center ;margin-top: 50px;">SẢN PHẨM BÁN CHẠY</p> -->
       <p class="bigtitlehome" style="text-align:center ;margin-top: 50px;">CASIO</p>
       <div id="productBC">
         <div class="clockBrandContent">
           <div class="col30">
             <img src="assets/img/hoangImg/imgs/118_AEQ-110W-3AVDF-699x699.png" alt="" width="250px" alt="">
+            <a href="contact.php"><button>Xem thêm</button></a>
           </div>
           <p style="text-align: justify;display: flex;align-items: center;" class="col70 smalltitlehome">Đồng hồ Casio
             là một trong những thương hiệu đồng hồ nổi tiếng và được yêu thích trên toàn

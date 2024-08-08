@@ -1,4 +1,15 @@
 <?php
+session_start();
+
+// Kiểm tra nếu người dùng chưa đăng nhập hoặc không phải là admin
+if(!isset($_SESSION['AdminID'])) {
+    echo "<script>
+            alert('Bạn không có quyền truy cập trang này.');
+            window.location.href = 'sidebar.php';
+        </script>";
+    exit();
+}
+
     //Them
     if(isset($_GET['enableQuery'])  && isset($_POST['submit']) && $_POST['submit'] == 'insert') {
         include './connectdb.php';

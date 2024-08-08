@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./assets/css/user-manager.css">
     <link rel="stylesheet" href="./assets/css/inventory-receiving-voucher.css">
     <link rel="stylesheet" href="./assets/css/order-manager.css">
+    <link rel="stylesheet" href="./assets/css/manager-manager.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="text/javascript" src="./assets/js/admin-js.js"></script>
 </head>
@@ -60,7 +61,12 @@
                     <a href="voucher-manager.php" class="sidebar-nav-item__link"><span class="sidebar-nav-item__icon material-symbols-outlined">bookmark</span>Mã Giảm Giá<span></a>
                 </li>
                 <li class="sidebar-nav__item">
+                    <a href="manager-manager.php" class="sidebar-nav-item__link"><span class="sidebar-nav-item__icon material-symbols-outlined">manage_accounts</span>Quản Lý<span></a>
+                </li>
+                <li class="sidebar-nav__item">
                     <a href="admin-logout.php" class="sidebar-nav-item__link" onclick="return confirmLogout();"><span class="sidebar-nav-item__icon material-symbols-outlined">power_settings_new</span>Đăng Xuất<span></a>
                 </li>
             </ul>
         </div>
+        
+    </div>
