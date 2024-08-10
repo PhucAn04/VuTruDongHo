@@ -261,10 +261,8 @@ $keyWord = !empty($_GET['manager-search']) ? str_replace("\\", "", $_GET['manage
                     <option value="1">Đang hoạt động</option>
                     <option value="0">Đang khóa</option>
                 </select>
-            </div>
-            <div class="modal-manager-container__footer">
-                <button name="submit" type="submit" value="insert">Thêm</button>
-                <button name="submit" type="submit" value="edit">Sửa</button>
+                <button type="submit" class="modal-manager-container-content__btn insert" name="submit" value="insert"  onclick="return checkUserForm('thêm');">Thêm</button>
+                <button type="submit" class="modal-manager-container-content__btn edit" name="submit" value="edit" onclick="return checkUserForm('sửa');">Sửa</button>
             </div>
         </form>
     </div>
