@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2024 at 06:01 AM
+-- Generation Time: Aug 10, 2024 at 03:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -126,7 +126,27 @@ CREATE TABLE `manager` (
 INSERT INTO `manager` (`ManagerID`, `Name`, `Email`, `Password`, `Role`, `CreatedAt`, `Status`) VALUES
 (1, 'Phuc An', 'pham27282@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '', '0000-00-00 00:00:00', 1),
 (7, 'An', 'ab@gmail.com', '9adcb29710e807607b683f62e555c22dc5659713', 'Manager', '2024-08-08 02:57:38', 1),
-(8, 'abc', 'abc@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Manager', '2024-08-08 02:58:35', 1);
+(8, 'abc', 'abc@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Manager', '2024-08-08 02:58:35', 1),
+(9, 'def', 'def123@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Manager', '2024-08-09 13:55:43', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `online_users`
+--
+
+CREATE TABLE `online_users` (
+  `id` int(11) NOT NULL,
+  `session_id` varchar(255) NOT NULL,
+  `last_activity` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `online_users`
+--
+
+INSERT INTO `online_users` (`id`, `session_id`, `last_activity`) VALUES
+(5, 'oe15seg21jvskn5tpnjq8qu3uv', '2024-08-10 00:30:10');
 
 -- --------------------------------------------------------
 
@@ -465,6 +485,12 @@ ALTER TABLE `manager`
   ADD UNIQUE KEY `Email` (`Email`);
 
 --
+-- Indexes for table `online_users`
+--
+ALTER TABLE `online_users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
@@ -539,7 +565,13 @@ ALTER TABLE `voucher`
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `online_users`
+--
+ALTER TABLE `online_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
