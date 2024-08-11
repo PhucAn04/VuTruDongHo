@@ -10,7 +10,6 @@
             'assets/img/hoangImg/slider/slide3.png'
         ],
         [
-            'assets/img/hoangImg/slider/slide4.jpg',
             'assets/img/hoangImg/slider/slide5.png',
             'assets/img/hoangImg/slider/slide6.png'
         ],
