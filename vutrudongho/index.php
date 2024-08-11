@@ -337,13 +337,13 @@ echo "Số lượt khách đang truy cập: " . $online_users_count;
     </div>
   </div>
   <?php
-      include("components/advertise.php");
+    include("advertise.php");
   ?>
   <!--Start: Footer-->
   <div id="my-footer">
-    <?php
-    include("components/footer.php");
-    ?>
+  <?php
+  include("components/footer.php");
+  ?>
   </div>
   <!--End: Footer-->
   <script>
