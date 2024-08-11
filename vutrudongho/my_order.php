@@ -59,8 +59,6 @@ $result = mysqli_query($conn, $query);
     data-tag="font">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
-  <script src="sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 
 <body>
@@ -78,7 +76,7 @@ $result = mysqli_query($conn, $query);
     <div id="main-content">
       <div id="tab-bar-user">
         <p class="content-tab-bar-userr">Xin chào,
-          <?php echo ("$_SESSION[current_fullName]"); ?>!
+          <?php echo ("$_SESSION[FullName]"); ?>!
         </p>
         <ul id="primary3">
           <li style="margin-bottom: 16px;"><a href="user_information.php">Thông tin tài khoản</a></li>
@@ -196,7 +194,7 @@ $result = mysqli_query($conn, $query);
            </script>';
         }
         ?>
-        <!-- <div class="component_order"
+        <div class="component_order"
           style="display: flex;flex-direction: column;width: 100%;height: fit-content;align-items: center;background-color: #fff;margin-bottom: 8px;padding-bottom: 8px;">
           <div class="header-component-order"
             style="display: inline-flex;padding: 8px 8px 8px 8px;align-items: left;width: 100%;position:relative;">
@@ -224,7 +222,7 @@ $result = mysqli_query($conn, $query);
             <p style="width: 22%;">Thanh toán khi nhận hàng</p>
             <p style="width: 12%;">Đã giao hàng</p>
           </div>
-        </div> -->
+        </div>
 
 
         <div

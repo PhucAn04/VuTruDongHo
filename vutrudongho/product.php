@@ -65,6 +65,9 @@
 
         ?>
     </div>
+    <?php
+      include("advertise.php");
+  ?>
     <div id="my-footer">
         <?php
         include(".//components/footer.php");

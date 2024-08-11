@@ -16,6 +16,60 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         data-tag="font">
+        <style>
+        /* Style cho biểu mẫu */
+        .input {
+            margin-right: 0;
+            padding: 80px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều rộng */
+        }
+
+        /* Style cho các nhãn và trường nhập */
+        .input label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input input[type="text"],
+        .input input[type="email"],
+        .input select,
+        .input textarea {
+            width: calc(50% - 10px); /* Hoặc sử dụng 100% và loại bỏ margin-right */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Đảm bảo padding không làm tăng chiều rộng */
+        }
+
+
+        .input textarea {
+            width: calc(100% - 20px); /* Chiều rộng của textarea */
+            margin-right: 0; /* Bỏ khoảng cách bên phải */
+        }
+
+        /* Style cho nút gửi */
+        .input button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Màu nền của nút */
+            color: #fff; /* Màu chữ của nút */
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px; /* Khoảng cách phía trên nút */
+            transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+        }
+
+        .input button:hover {
+            background-color: #0056b3; /* Màu nền khi di chuột qua nút */
+        }
+
+    </style>
 </head>
   <!--Start: Header-->
   <div id="bar-header">
@@ -28,6 +82,36 @@
     background: linear-gradient(133deg, rgba(128,83,221,1) 2%, rgba(173,114,206,1) 50%, rgba(220,165,200,1) 100%);" >
     <div id="container-aboutUs" style="position: relative;top:50px;height: fit-content;width: 100%;display: flex;flex-direction: column;align-items: center;">
         <img src="assets/Img/hoangImg/imgs/banner_contact.png" width="100%" alt="">
+        <a name="lien_he_chung_toi"></a>
+            <div id="lienhechungtoi" style="margin-top:50px;display: flex;flex-direction: column;width: 95%;background-color: #fff;height: fit-content;padding: 12px;">
+                <p style="font-weight: bold;font-size: 24px;margin-bottom: 4px;">Liên hệ ngay với chúng tôi</p>
+                <form action="process_contact.php" method="post" class="input">
+                <div class="form-group">
+                    <label for="full_name">Họ và tên:</label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Chủ đề:</label>
+                    <select id="subject" name="subject" required>
+                        <option value="support">Hỗ trợ kỹ thuật</option>
+                        <option value="product">Câu hỏi về sản phẩm</option>
+                        <option value="feedback">Phản hồi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Nội dung:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <button type="submit">Gửi</button>
+            </form>
         <a name="ban_hang_online"></a>
         <div id="banhangonline" style="margin-top:50px;display: flex;flex-direction: column;width: 95%;background-color: #fff;height: fit-content;padding: 12px;">
             <p style="font-weight: bold;font-size: 24px;margin-bottom: 4px;">Bán hàng online</p>

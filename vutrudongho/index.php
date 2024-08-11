@@ -62,19 +62,16 @@ require_once('lib_session.php');
     height: 100px;justify-content: center;">
       <img id="vtdd-logotext" src="assets/img/hoangImg/logo/logo_text_ngang.png" alt="">
     </div>
+    <?php include("slider.php") ?>
     <!--Begin: Slider-->
     <div class="slider">
-      <div class="slide-wrapper">
-        <div class="slide">
-          <img class="slide-img" src="assets/img/hoangImg/slider/slide1.png" alt="Slide1" />
+        <div class="slide-wrapper">
+            <?php foreach ($images as $image): ?>
+                <div class="slide">
+                    <img class="slide-img" src="<?php echo $image; ?>" alt="Slide" />
+                </div>
+            <?php endforeach; ?>
         </div>
-        <div class="slide">
-          <img class="slide-img" src="assets/img/hoangImg/slider/slide2.png" alt="Slide2" />
-        </div>
-        <div class="slide">
-          <img class="slide-img" src="assets/img/hoangImg/slider/slide3.png" alt="Slide3" />
-        </div>
-      </div>
     </div>
     <!--End: Slider-->
     <div style="background-color: #fff;">
@@ -171,7 +168,6 @@ require_once('lib_session.php');
             <img src="assets/img/productImg/SRPG41K1.png" style="opacity: 0.9;" alt="" width="180px">
           </div>
         </div>
-
       </div>
     </div>
 
@@ -183,7 +179,6 @@ require_once('lib_session.php');
         <div class="clockBrandContent">
           <div class="col30">
             <img src="assets/img/hoangImg/imgs/118_AEQ-110W-3AVDF-699x699.png" alt="" width="250px" alt="">
-            <a href="contact.php"><button>Xem thêm</button></a>
           </div>
           <p style="text-align: justify;display: flex;align-items: center;" class="col70 smalltitlehome">Đồng hồ Casio
             là một trong những thương hiệu đồng hồ nổi tiếng và được yêu thích trên toàn
@@ -193,6 +188,7 @@ require_once('lib_session.php');
             minh, đồng hồ chống nước, đồng hồ đo nhịp tim và nhiều tính năng khác. Với chất lượng đáng tin cậy và giá cả
             hợp lý, đồng hồ Casio là một lựa chọn tuyệt vời cho bất kỳ ai đang tìm kiếm một chiếc đồng hồ đa năng và
             thời trang.</p>
+            <a href="product.php?brand=Casio&idBrand=BR002"><button>Xem thêm</button></a>
         </div>
         <img src="assets/img/hoangImg/imgs/banerCasioBaby.png" alt="" width="250px"
           style="width: 100%;margin-top: 12px;">
@@ -215,6 +211,7 @@ require_once('lib_session.php');
             là điểm nhấn đáng chú ý của Apple Watch, giúp người dùng dễ dàng điều hướng và khám phá thế giới xung quanh
             một cách thuận tiện hơn. Với chất lượng và độ tin cậy của thương hiệu Apple, Apple Watch là một sự lựa chọn
             tuyệt vời cho những ai muốn sở hữu một chiếc đồng hồ thông minh đẳng cấp và hiện đại.</p>
+            <a href="product.php?brand=Apple&idBrand=BR005"><button>Xem thêm</button></a>
         </div>
         <img src="assets/img/hoangImg/imgs/apple_baner.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/apple_banner3.jpg" alt="" style="width: 100%;">
@@ -235,6 +232,7 @@ require_once('lib_session.php');
             cho phép sử dụng năng lượng ánh sáng để làm năng lượng cho đồng hồ, giúp tiết kiệm pin và bảo vệ môi trường.
             Với chất lượng và độ tin cậy của thương hiệu Citizen, đồng hồ Citizen là sự lựa chọn hoàn hảo cho những ai
             đang tìm kiếm một chiếc đồng hồ đa năng và bền vững.</p>
+            <a href="product.php?brand=Citizen&idBrand=BR003"><button>Xem thêm</button></a>
         </div>
         <img src="assets/img/hoangImg/imgs/citizen_banner1.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/citizen_banner2.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
@@ -257,6 +255,7 @@ require_once('lib_session.php');
             tự động, cho phép đồng hồ sử dụng chính chuyển động của cổ tay để làm năng lượng cho đồng hồ, giúp tiết kiệm
             năng lượng và kéo dài tuổi thọ của pin. Với chất lượng và độ tin cậy của thương hiệu Orient, đồng hồ Orient
             là sự lựa chọn tuyệt vời cho những ai đang tìm kiếm một chiếc đồng hồ chất lượng cao và đáng tin cậy.</p>
+            <a href="product.php?brand=Orient&idBrand=BR004"><button>Xem thêm</button></a>
         </div>
         <img src="assets/img/hoangImg/imgs/orient_banner1.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/orient_banner2.jpg" alt="" style="width: 100%;">
@@ -278,22 +277,73 @@ require_once('lib_session.php');
             solar, cho phép đồng hồ sử dụng chính chuyển động của cổ tay hoặc ánh sáng để làm năng lượng cho đồng hồ,
             giúp tiết kiệm năng lượng và kéo dài tuổi thọ của pin. Với chất lượng và độ tin cậy của thương hiệu Seiko,
             đồng hồ Seiko là sự lựa chọn hoàn hảo cho những ai đang tìm kiếm một chiếc đồng hồ đa năng và bền vững.</p>
+            <a href="product.php?brand=Seiko&idBrand=BR001"><button>Xem thêm</button></a>
         </div>
         <img src="assets/img/hoangImg/imgs/seiko_banner1.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/seiko_banner2.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
-        <img src="assets/img/hoangImg/imgs/seiko_banner3.jpg" alt="" style="width: 100%;">
+        <img src="assets/img/hoangImg/imgs/seiko_banner3.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
+<?php
+//Hàm lọc các người truy cập
+function updateOnlineUsers($conn) {
+    $session_id = session_id();
+    $timeout = 300; // Thời gian hết hạn phiên (giây)
 
+    // Xóa các phiên cũ
+    $sql = "DELETE FROM online_users WHERE last_activity < NOW() - INTERVAL $timeout SECOND";
+    $conn->query($sql);
+
+    // Kiểm tra xem phiên hiện tại đã tồn tại chưa
+    $sql = "SELECT * FROM online_users WHERE session_id = '$session_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 0) {
+        // Nếu chưa có, thêm phiên mới
+        $sql = "INSERT INTO online_users (session_id) VALUES ('$session_id')";
+        $conn->query($sql);
+    } else {
+        // Cập nhật thời gian hoạt động của phiên hiện tại
+        $sql = "UPDATE online_users SET last_activity = NOW() WHERE session_id = '$session_id'";
+        $conn->query($sql);
+    }
+}
+?>
+<?php
+//hàm đếm người truy cập
+function getOnlineUsersCount($conn) {
+    $timeout = 300; // Thời gian hết hạn phiên (giây)
+    $sql = "SELECT COUNT(*) AS online_count FROM online_users WHERE last_activity >= NOW() - INTERVAL $timeout SECOND";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['online_count'];
+    } else {
+        return 0;
+    }
+}
+?>
+<?php
+//run
+// session_start();
+include 'conect_user.php'; // Kết nối cơ sở dữ liệu
+
+updateOnlineUsers($conn);
+
+// Sau đó, bạn có thể sử dụng hàm getOnlineUsersCount() để lấy số lượt khách đang truy cập
+$online_users_count = getOnlineUsersCount($conn);
+echo "Số lượt khách đang truy cập: " . $online_users_count;
+?>
       </div>
     </div>
-
-
   </div>
-
+  <?php
+    include("advertise.php");
+  ?>
   <!--Start: Footer-->
   <div id="my-footer">
-    <?php
-    include("components/footer.php");
-    ?>
+  <?php
+  include("components/footer.php");
+  ?>
   </div>
   <!--End: Footer-->
   <script>
@@ -390,4 +440,5 @@ require_once('lib_session.php');
     }
   ?>
 </body>
+
 </html>
