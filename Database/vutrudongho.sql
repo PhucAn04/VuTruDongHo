@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2024 at 03:26 AM
+-- Generation Time: Aug 11, 2024 at 06:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -93,6 +93,21 @@ INSERT INTO `cart` (`UserID`, `ProductID`, `Quantity`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` enum('support','product','feedback') NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `inventoryreceivingvoucher`
 --
 
@@ -146,7 +161,7 @@ CREATE TABLE `online_users` (
 --
 
 INSERT INTO `online_users` (`id`, `session_id`, `last_activity`) VALUES
-(5, 'oe15seg21jvskn5tpnjq8qu3uv', '2024-08-10 00:30:10');
+(6, 'qhj8sfcqub5gj5ep6eq1d6bsav', '2024-08-11 04:23:29');
 
 -- --------------------------------------------------------
 
@@ -471,6 +486,12 @@ ALTER TABLE `cart`
   ADD KEY `FK_ProductID_Cart` (`ProductID`);
 
 --
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `inventoryreceivingvoucher`
 --
 ALTER TABLE `inventoryreceivingvoucher`
@@ -562,6 +583,12 @@ ALTER TABLE `voucher`
 --
 
 --
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
@@ -571,7 +598,7 @@ ALTER TABLE `manager`
 -- AUTO_INCREMENT for table `online_users`
 --
 ALTER TABLE `online_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

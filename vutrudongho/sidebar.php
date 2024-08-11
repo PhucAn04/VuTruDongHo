@@ -65,6 +65,9 @@
                     <a href="manager-manager.php" class="sidebar-nav-item__link"><span class="sidebar-nav-item__icon material-symbols-outlined">manage_accounts</span>Quản Lý<span></a>
                 </li>
                 <li class="sidebar-nav__item">
+                    <a href="reply-manager.php" class="sidebar-nav-item__link"><span class="sidebar-nav-item__icon material-symbols-outlined">feedback</span>Phản hồi<span></a>
+                </li>
+                <li class="sidebar-nav__item">
                     <a href="admin-logout.php" class="sidebar-nav-item__link" onclick="return confirmLogout();"><span class="sidebar-nav-item__icon material-symbols-outlined">power_settings_new</span>Đăng Xuất<span></a>
                 </li>
             </ul>
