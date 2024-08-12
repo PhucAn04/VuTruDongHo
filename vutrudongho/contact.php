@@ -19,7 +19,6 @@
         <style>
         /* Style cho biểu mẫu */
         .input {
-            width: 1200px; /* Hoặc max-width: 1200px */
             margin-right: 0;
             padding: 80px;
             border: 1px solid #ddd;
