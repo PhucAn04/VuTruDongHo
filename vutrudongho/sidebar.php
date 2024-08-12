@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +22,7 @@
     <link rel="stylesheet" href="./assets/css/user-manager.css">
     <link rel="stylesheet" href="./assets/css/inventory-receiving-voucher.css">
     <link rel="stylesheet" href="./assets/css/order-manager.css">
+    <link rel="stylesheet" href="./assets/css/manager-manager.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script type="text/javascript" src="./assets/js/admin-js.js"></script>
 </head>
