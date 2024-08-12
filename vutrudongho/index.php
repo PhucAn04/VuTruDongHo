@@ -62,16 +62,19 @@ require_once('lib_session.php');
     height: 100px;justify-content: center;">
       <img id="vtdd-logotext" src="assets/img/hoangImg/logo/logo_text_ngang.png" alt="">
     </div>
-    <?php include("slider.php") ?>
     <!--Begin: Slider-->
     <div class="slider">
-        <div class="slide-wrapper">
-            <?php foreach ($images as $image): ?>
-                <div class="slide">
-                    <img class="slide-img" src="<?php echo $image; ?>" alt="Slide" />
-                </div>
-            <?php endforeach; ?>
+      <div class="slide-wrapper">
+        <div class="slide">
+          <img class="slide-img" src="assets/img/hoangImg/slider/slide1.png" alt="Slide1" />
         </div>
+        <div class="slide">
+          <img class="slide-img" src="assets/img/hoangImg/slider/slide2.png" alt="Slide2" />
+        </div>
+        <div class="slide">
+          <img class="slide-img" src="assets/img/hoangImg/slider/slide3.png" alt="Slide3" />
+        </div>
+      </div>
     </div>
     <!--End: Slider-->
     <div style="background-color: #fff;">
@@ -170,7 +173,37 @@ require_once('lib_session.php');
         </div>
       </div>
     </div>
+    <div>
+    <div>
+    <p style="text-align:center ; font-size: 30px;">CÁC MẶT HÀNG ĐANG HOT</p>
+    </div>
+    <a id="imageLink" href="#">
+        <img id="bannerImage" src="assets/img/hoangImg/imgs/banerCasioBaby.png" alt="" width="250px" style="width: 100%;margin-top: 12px;">
+    </a>
+    </div>
+    <script>
+    const images = [
+        { src: 'assets/img/hoangImg/imgs/banerCasioBaby.png', href: 'index.php#casioBrandInfo' },
+        { src: 'assets/img/hoangImg/imgs/apple_baner.jpg', href: 'index.php#appleBrandInfo' },
+        { src: 'assets/img/hoangImg/imgs/citizen_banner1.jpg', href: 'index.php#citizenBrandInfo' },
+        { src: 'assets/img/hoangImg/imgs/orient_banner2.jpg', href: 'index.php#orientBrandInfo' },
+        { src: 'assets/img/hoangImg/imgs/seiko_banner2.jpg', href: 'index.php#seikoBrandInfo' },
+    ];
+    
+    let currentIndex = 0
 
+    function updateImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        const image = images[currentIndex];
+        document.getElementById('bannerImage').src = image.src;
+        document.getElementById('imageLink').href = image.href;
+    }
+
+    setInterval(updateImage, 10000); // 10000 milliseconds = 10 seconds
+
+    // Initialize the image and link
+    updateImage();
+</script>
 
     <div id="casioBrandInfo" style="background-color: rgba(103, 80, 164, 0.4); margin-top: 56px; padding-bottom: 56px;">
       <!-- <p class="bigtitlehome" style="text-align:center ;margin-top: 50px;">SẢN PHẨM BÁN CHẠY</p> -->
@@ -336,14 +369,12 @@ echo "Số lượt khách đang truy cập: " . $online_users_count;
       </div>
     </div>
   </div>
-  <?php
-    include("advertise.php");
-  ?>
+
   <!--Start: Footer-->
   <div id="my-footer">
-  <?php
-  include("components/footer.php");
-  ?>
+    <?php
+    include("components/footer.php");
+    ?>
   </div>
   <!--End: Footer-->
   <script>
