@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2024 at 06:24 AM
+-- Generation Time: Aug 12, 2024 at 08:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -86,7 +86,6 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`UserID`, `ProductID`, `Quantity`) VALUES
-('US000011', 'PR000002', 1),
 ('US000012', 'PR000001', 1),
 ('US000012', 'PR000002', 1);
 
@@ -161,7 +160,8 @@ CREATE TABLE `online_users` (
 --
 
 INSERT INTO `online_users` (`id`, `session_id`, `last_activity`) VALUES
-(6, 'qhj8sfcqub5gj5ep6eq1d6bsav', '2024-08-11 04:23:29');
+(6, 'qhj8sfcqub5gj5ep6eq1d6bsav', '2024-08-11 04:23:29'),
+(11, 'oe15seg21jvskn5tpnjq8qu3uv', '2024-08-12 06:12:27');
 
 -- --------------------------------------------------------
 
@@ -178,7 +178,7 @@ CREATE TABLE `order` (
   `OrderTotal` double NOT NULL,
   `Address` varchar(150) NOT NULL,
   `PaymentID` varchar(4) NOT NULL,
-  `VoucherID` varchar(5) NOT NULL,
+  `VoucherID` varchar(255) DEFAULT NULL,
   `OrderStatus` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -278,9 +278,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ProductID`, `BrandID`, `ProductName`, `PriceToSell`, `ImportPrice`, `Discount`, `Model`, `Color`, `Gender`, `Description`, `ProductImg`, `Status`, `CanDel`) VALUES
-('PR000001', 'BR001', 'Seiko 5 Field Sports Style SRPG29K1 – Nam – Automatic (Tự Động) – Mặt Số 39.4mm, Chống Nước 10ATM, Bộ Máy In-House', 7090000, 6090000, 0, 'Đồng hồ cơ', 'Bạc', 'Nam', 'Mẫu Seiko SRPG29K1 thiết kế đơn giản chức năng 3 kim, chi tiết kim chỉ cùng các cọc chấm tròn nhỏ được phủ dạ quang trên nền mặt số xanh 39.4mm.', 'SRPG29K1-699x699.png', 1, 1),
-('PR000002', 'BR001', 'Seiko 5 Field Specialist Style SRPG41K1 – Nam – Automatic (Tự Động) – Mặt Số 39.4mm, Chống Nước 10ATM, Bộ Máy In-House', 8050000, 7050000, 0, 'Đồng hồ cơ', 'Đen', 'Nam', 'Mẫu Seiko SRPG41K1 thiết kế đơn giản chức năng 3 kim, chi tiết kim chỉ cùng các cọc chấm nhỏ được phủ dạ quang trên nền mặt số kích thước 39.4mm.', 'SRPG41K1.png', 1, 1),
-('PR000003', 'BR001', 'Seiko SSB351P1 – Nam – Kính Cứng – Quartz (Pin) – Mặt Số 43.9mm, Dạ Quang, Chống Nước 10ATM.', 6375000, 5375000, 0, 'Đồng hồ cơ', 'Đen', 'Nam', 'Mẫu Seiko SSB351P1 phiên bản nam tính với tính năng Chronograph (đo thời gian) tạo nên kiểu dáng đồng hồ 6 kim trên nền mặt số lớn kích thước 43.9mm.', 'SSB351P1-699x699.png', 1, 1),
+('PR000001', 'BR001', 'Seiko 5 Field Sports Style SRPG29K1 – Nam – Automatic (Tự Động) – Mặt Số 39.4mm, Chống Nước 10ATM, Bộ Máy In-House', 7090000, 6090000, 0, 'Đồng hồ cơ', 'Bạc', 'Nam', 'Mẫu Seiko SRPG29K1 thiết kế đơn giản chức năng 3 kim, chi tiết kim chỉ cùng các cọc chấm tròn nhỏ được phủ dạ quang trên nền mặt số xanh 39.4mm.', 'SRPG29K1-699x699.png', 1, 0),
+('PR000002', 'BR001', 'Seiko 5 Field Specialist Style SRPG41K1 – Nam – Automatic (Tự Động) – Mặt Số 39.4mm, Chống Nước 10ATM, Bộ Máy In-House', 8050000, 7050000, 0, 'Đồng hồ cơ', 'Đen', 'Nam', 'Mẫu Seiko SRPG41K1 thiết kế đơn giản chức năng 3 kim, chi tiết kim chỉ cùng các cọc chấm nhỏ được phủ dạ quang trên nền mặt số kích thước 39.4mm.', 'SRPG41K1.png', 1, 0),
+('PR000003', 'BR001', 'Seiko SSB351P1 – Nam – Kính Cứng – Quartz (Pin) – Mặt Số 43.9mm, Dạ Quang, Chống Nước 10ATM.', 6375000, 5375000, 0, 'Đồng hồ cơ', 'Đen', 'Nam', 'Mẫu Seiko SSB351P1 phiên bản nam tính với tính năng Chronograph (đo thời gian) tạo nên kiểu dáng đồng hồ 6 kim trên nền mặt số lớn kích thước 43.9mm.', 'SSB351P1-699x699.png', 1, 0),
 ('PR000004', 'BR002', 'Casio EFV-550L-1AVUDF – Quartz (Pin) – Mặt Số 47mm, Kính Cứng, Chống Nước 10ATM', 3529000, 2529000, 0, 'Đồng hồ cơ', 'Đen', 'Unisex', 'Mẫu Casio EFV-550L-1AVUDF mang đến cho phái mạnh vẻ ngoài lịch lãm nhưng cũng không kém phần trẻ trung đặc trưng thuộc dòng Edifice với kiểu dáng đồng hồ 6 kim đi kèm tính năng đo thời gian Chronograph.', '68_EFV-550L-1AVUDF-1-699x699.png', 1, 1),
 ('PR000005', 'BR002', 'Casio MTP-1302D-7A1VDF – Nữ – Quartz (Pin) – Mặt Số 38.5mm, Kính Cứng, Chống Nước 5ATM.', 1347000, 1000000, 0, 'Đồng hồ cơ', 'Bạch kim', 'Nữ', 'Đồng hồ Casio MTP-1302D-7A1VDF có kiểu dáng truyền thống với mặt số tròn, niềng được tạo khía nổi bật quanh nền trắng mặt số, kim chỉ và vạch số được mạ bạc trên nền số.', '35_MTP-1302D-7A1VDF-699x699.png', 1, 1),
 ('PR000006', 'BR002', 'Casio AEQ-110W-3AVDF – Nam – Kính Nhựa – Quartz (Pin) – Mặt Số 46.6mm, Bộ Bấm Giờ, Chống Nước 10ATM', 1581000, 1281000, 0, 'Đồng hồ điện tử', 'Đen', 'Nam', 'Mẫu Casio AEQ-110W-3AVDF thiết kế phong cách dành cho các tín đồ yêu thích các hoạt động thể thao ngoài trời hoặc dân đi phượt với nền mặt số điện tử đi kèm đa chức năng cùng khả năng chịu nước 10 ATM.', '118_AEQ-110W-3AVDF-699x699.png', 1, 1),
@@ -322,8 +322,17 @@ CREATE TABLE `product_quantity` (
 
 INSERT INTO `product_quantity` (`ProductID`, `Date`, `Quantity`) VALUES
 ('PR000001', '2023-05-16 12:53:57', 21),
+('PR000001', '2024-08-12 01:05:36', 18),
+('PR000001', '2024-08-12 01:11:40', 18),
+('PR000001', '2024-08-12 12:30:05', 20),
+('PR000001', '2024-08-12 12:32:05', 19),
 ('PR000002', '2023-05-16 07:35:17', 34),
+('PR000002', '2024-08-12 01:05:36', 30),
+('PR000002', '2024-08-12 01:11:40', 30),
+('PR000002', '2024-08-12 12:30:05', 32),
+('PR000002', '2024-08-12 12:32:05', 31),
 ('PR000003', '2023-05-15 16:41:13', 31),
+('PR000003', '2024-08-12 12:40:29', 11),
 ('PR000004', '2023-04-24 20:13:35', 1),
 ('PR000005', '2023-04-24 20:13:35', 15),
 ('PR000006', '2023-04-24 20:13:35', 50),
@@ -598,7 +607,7 @@ ALTER TABLE `manager`
 -- AUTO_INCREMENT for table `online_users`
 --
 ALTER TABLE `online_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

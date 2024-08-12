@@ -906,8 +906,8 @@ var checkUserForm = (action) => {
         user_pass_err.innerText = '*Trường này không được để trống';
         user_pass_err.style.display = 'block';
         valid = false;
-    } else if (user_pass.value.trim().length > 200) {
-        user_pass_err.innerText = '*Mật khẩu không vượt quá 200 kí tự';
+    } else if (user_pass.value.trim().length > 20) {
+        user_pass_err.innerText = '*Mật khẩu không vượt quá 20 kí tự';
         user_pass_err.style.display = 'block';
         valid = false;
     };
@@ -1068,8 +1068,8 @@ var checkValidateAdminAccountForm = () => {
         password_err.innerText = "*Mật khẩu không được để trống"
         password_err.style.display = 'block';
         valid = false;
-    } else if(password.value.trim().length > 200) {
-        password_err.innerText = "*Mật khẩu không vượt quá 200 kí tự"
+    } else if(password.value.trim().length > 20) {
+        password_err.innerText = "*Mật khẩu không vượt quá 20 kí tự"
         password_err.style.display = 'block';
         valid = false;
     }
