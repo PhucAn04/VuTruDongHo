@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2024 at 03:01 PM
+-- Generation Time: Aug 12, 2024 at 08:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -160,7 +160,8 @@ CREATE TABLE `online_users` (
 --
 
 INSERT INTO `online_users` (`id`, `session_id`, `last_activity`) VALUES
-(12, 'qhj8sfcqub5gj5ep6eq1d6bsav', '2024-08-12 12:37:14');
+(6, 'qhj8sfcqub5gj5ep6eq1d6bsav', '2024-08-11 04:23:29'),
+(11, 'oe15seg21jvskn5tpnjq8qu3uv', '2024-08-12 06:12:27');
 
 -- --------------------------------------------------------
 
@@ -186,7 +187,6 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`OrderID`, `UserID`, `OderDate`, `ShippingFee`, `OrderDiscount`, `OrderTotal`, `Address`, `PaymentID`, `VoucherID`, `OrderStatus`) VALUES
-('OD00000010', 'US000013', '2024-08-12 07:37:11', 35000, 0, 8085000, 'kjdkjfhvkjzhkvh###', 'PA01', NULL, 'S01'),
 ('OR00000001', 'US000001', '2023-05-16 04:07:33', 30000, 10000, 1000000, '521/91E CMT8#P13#Q10#HCM', 'PA01', 'VO001', 'S01'),
 ('OR00000002', 'US000001', '2023-05-16 04:09:04', 30000, 10000, 1000000, '521/91E CMT8#P13#Q10#HCM', 'PA01', 'VO001', 'S01'),
 ('OR00000003', 'US000001', '2023-05-16 04:09:04', 30000, 10000, 1000000, '521/91E CMT8#P13#Q10#HCM', 'PA01', 'VO001', 'S02'),
@@ -231,13 +231,6 @@ CREATE TABLE `order_line` (
   `Quantity` int(11) NOT NULL,
   `UnitPrice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `order_line`
---
-
-INSERT INTO `order_line` (`OrderID`, `ProductID`, `Quantity`, `UnitPrice`) VALUES
-('OD00000010', 'PR000002', 1, 8050000);
 
 -- --------------------------------------------------------
 
@@ -336,7 +329,6 @@ INSERT INTO `product_quantity` (`ProductID`, `Date`, `Quantity`) VALUES
 ('PR000002', '2023-05-16 07:35:17', 34),
 ('PR000002', '2024-08-12 01:05:36', 30),
 ('PR000002', '2024-08-12 01:11:40', 30),
-('PR000002', '2024-08-12 07:37:11', 30),
 ('PR000002', '2024-08-12 12:30:05', 32),
 ('PR000002', '2024-08-12 12:32:05', 31),
 ('PR000003', '2023-05-15 16:41:13', 31),
@@ -446,8 +438,7 @@ INSERT INTO `user` (`UserID`, `FullName`, `NumberPhone`, `Email`, `Password`, `H
 ('US000009', 'Phạm Cẩm Thơ', '0976548762', 'camtho234@gmail.com', '123456', '521/91E CMT8', 'Phường 13', 'Quận 10', 'Thành phố Hồ Chí Minh', 1),
 ('US000010', 'Đào Công Trứ', '0327794829', 'congtru2865@gmail.com', '123456', 'Đường 19/5', 'Xã Tân Ân', 'Huyện Cần Đước', 'Tỉnh Long An', 1),
 ('US000011', 'Phúc Ân', '0123456789', 'pham27282@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '0123', '', '', '', 1),
-('US000012', 'Bình', '0123457689', 'ggbinh123@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '123', '', '', '', 1),
-('US000013', 'ly tran viet', '0991233545', 'lyviettran0128@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'kjdkjfhvkjzhkvh', '', '', '', 1);
+('US000012', 'Bình', '0123457689', 'ggbinh123@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '123', '', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -616,7 +607,7 @@ ALTER TABLE `manager`
 -- AUTO_INCREMENT for table `online_users`
 --
 ALTER TABLE `online_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

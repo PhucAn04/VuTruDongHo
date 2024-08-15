@@ -16,6 +16,10 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         data-tag="font">
+    <!-- Thêm jQuery và plugin Snow-It -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Include Snow-It plugin -->
+    <script src="assets/JS/snow-it.js"></script>
 </head>
   <!--Start: Header-->
   <div id="bar-header">

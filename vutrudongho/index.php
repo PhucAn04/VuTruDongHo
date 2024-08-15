@@ -23,6 +23,18 @@ require_once('lib_session.php');
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
   <!-- <script src="sweetalert2.min.js"></script>
   <link rel="stylesheet" href="sweetalert2.min.css"> -->
+
+  <!-- Thêm jQuery và plugin Snow-It -->
+     <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <!-- Include Snow-It plugin -->
+  <script src="assets/JS/snow-it.js"></script>
+   <!-- PHẦN XÁC NHẬN EMAIL-->
+   <script src="assets/JS/signup.js"></script>
+   <link rel="stylesheet" href="assets/CSS/effects.css">
+   <script src="assets/JS/slide.js"></script>
+  <!-- Zoom Animation At Index From -->
+  <link rel="stylesheet" href="assets/CSS/Slide.css">
+  <script src="assets/JS/slide-animation.js"></script>
 </head>
 
 <body>
@@ -223,10 +235,12 @@ require_once('lib_session.php');
             thời trang.</p>
             <a href="product.php?brand=Casio&idBrand=BR002"><button>Xem thêm</button></a>
         </div>
+        <figure>
         <img src="assets/img/hoangImg/imgs/banerCasioBaby.png" alt="" width="250px"
-          style="width: 100%;margin-top: 12px;">
+        style="width: 100%;margin-top: 12px;">
         <img src="assets/img/hoangImg/imgs/banerCasioGsock.png" alt="" width="250px"
           style="width: 100%;margin-top: 14px;">
+        </figure>
 
         <hr id="appleBrandInfo" style="margin-top: 50px;margin-bottom: 50px;">
 
@@ -246,8 +260,10 @@ require_once('lib_session.php');
             tuyệt vời cho những ai muốn sở hữu một chiếc đồng hồ thông minh đẳng cấp và hiện đại.</p>
             <a href="product.php?brand=Apple&idBrand=BR005"><button>Xem thêm</button></a>
         </div>
+        <figure>
         <img src="assets/img/hoangImg/imgs/apple_baner.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/apple_banner3.jpg" alt="" style="width: 100%;">
+        </figure>
 
         <hr id="citizenBrandInfo" style="margin-top: 50px;margin-bottom: 50px;">
 
@@ -267,9 +283,11 @@ require_once('lib_session.php');
             đang tìm kiếm một chiếc đồng hồ đa năng và bền vững.</p>
             <a href="product.php?brand=Citizen&idBrand=BR003"><button>Xem thêm</button></a>
         </div>
+        <figure>
         <img src="assets/img/hoangImg/imgs/citizen_banner1.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/citizen_banner2.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/citizen_banner4.jpg" alt="" style="width: 100%;">
+        </figure>
 
         <hr id="orientBrandInfo" style="margin-top: 50px;margin-bottom: 50px;">
 
@@ -290,8 +308,10 @@ require_once('lib_session.php');
             là sự lựa chọn tuyệt vời cho những ai đang tìm kiếm một chiếc đồng hồ chất lượng cao và đáng tin cậy.</p>
             <a href="product.php?brand=Orient&idBrand=BR004"><button>Xem thêm</button></a>
         </div>
+        <figure>
         <img src="assets/img/hoangImg/imgs/orient_banner1.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/orient_banner2.jpg" alt="" style="width: 100%;">
+        </figure>
 
         <hr id="seikoBrandInfo" style="margin-top: 50px;margin-bottom: 50px;">
 
@@ -312,9 +332,24 @@ require_once('lib_session.php');
             đồng hồ Seiko là sự lựa chọn hoàn hảo cho những ai đang tìm kiếm một chiếc đồng hồ đa năng và bền vững.</p>
             <a href="product.php?brand=Seiko&idBrand=BR001"><button>Xem thêm</button></a>
         </div>
+        <figure>
         <img src="assets/img/hoangImg/imgs/seiko_banner1.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/seiko_banner2.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
         <img src="assets/img/hoangImg/imgs/seiko_banner3.jpg" alt="" style="width: 100%;margin-bottom: 14px;">
+        </figure>
+
+      <!-- Gọi plugin Snow-It -->
+     <script type="text/javascript">
+      $(document).ready(function () {
+      $.fn.snowit({
+      flakeColor: '#fff',
+      total: 100,
+      minSize: 30,
+      maxSize: 50,
+      });
+        });
+    </script>
+
 <?php
 //Hàm lọc các người truy cập
 function updateOnlineUsers($conn) {

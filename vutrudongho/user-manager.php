@@ -1,13 +1,13 @@
 <?php
 session_start();
-// Kiểm tra nếu người dùng chưa đăng nhập hoặc không phải là admin
-if(!isset($_SESSION['AdminID'])) {
-    echo "<script>
-            alert('Bạn không có quyền truy cập trang này.');
-            window.location.href = 'sidebar.php';
-        </script>";
-    exit();
-}
+    // Kiểm tra nếu người dùng chưa đăng nhập hoặc không phải là admin
+    if(!isset($_SESSION['AdminID'])) {
+        echo "<script>
+                alert('Bạn không có quyền truy cập trang này.');
+                window.location.href = 'sidebar.php';
+            </script>";
+        exit();
+    }
 
     //Them
     if(isset($_GET['enableQuery'])  && isset($_POST['submit']) && $_POST['submit'] == 'insert') {
@@ -289,6 +289,78 @@ $keyWord = !empty($_GET['user-search']) ? str_replace("\\", "", $_GET['user-sear
 
     <script>
         eventCloseModal('modal-user', 'modal-user__container', 'modal-user-container__close');
+        
+        const provinces = ['Hà Nội', 'Hồ Chí Minh', 'Đà Nẵng'];
+        const districts = {
+            'Hà Nội': ['Ba Đình', 'Hoàn Kiếm', 'Tây Hồ'],
+            'Hồ Chí Minh': ['Quận 1', 'Quận 2', 'Quận 3', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 7', 'Quận 8', 'Quận 9', 'Quận 10', 'Quận 11', 'Quận 12'],
+            'Đà Nẵng': ['Hải Châu', 'Thanh Khê', 'Sơn Trà']
+        };
+        const wards = {
+            'Ba Đình': ['Phúc Xá', 'Vĩnh Phúc', 'Cống Vị'],
+            'Hoàn Kiếm': ['Hàng Đào', 'Hàng Bạc', 'Hàng Buồm'],
+            'Tây Hồ': ['Tứ Liên', 'Nhật Tân', 'Quảng An'],
+            'Quận 1': ['Bến Nghé', 'Bến Thành', 'Nguyễn Thái Bình', 'Phạm Ngũ Lão', 'Cầu Ông Lãnh'],
+            'Quận 2': ['Thảo Điền', 'An Phú', 'Bình Trưng Tây', 'Bình An', 'Bình Khánh'],
+            'Quận 3': ['Phú Nhuận', 'Công Quỳnh', 'Trương Định', 'Võ Thị Sáu', 'Tân Định'],
+            'Quận 4': ['Cô Giang', 'Cô Bắc', 'Bình Thuận', 'Phú Thuận', 'Tân Thuận Tây'],
+            'Quận 5': ['Phú Thạnh', 'Phú Trung', 'Phú Thọ Hòa', 'Võ Thành', 'Chợ Lớn'],
+            'Quận 6': ['Bình Phú', 'Bình Trị Đông', 'Bình Trị Đông A', 'Bình Trị Đông B', 'Phú Lâm'],
+            'Quận 7': ['Tân Quy', 'Tân Phong', 'Phú Mỹ', 'Hưng Gia', 'Hưng Phước'],
+            'Quận 8': ['Bình Tân', 'Cầu Kho', 'Cầu Ông Lãnh', 'Đại Kinh', 'Tân Quý'],
+            'Quận 9': ['Long Bình', 'Long Thạnh Mỹ', 'Hiệp Phú', 'Tăng Nhơn Phú A', 'Tăng Nhơn Phú B'],
+            'Quận 10': ['Cô Giang', 'Hòa Hưng', 'Phạm Ngũ Lão', 'Nguyễn Cư Trinh', 'Bình Thới'],
+            'Quận 11': ['Tân Thành', 'Phú Thạnh', 'Phú Trung', 'Bình Thới', 'Bình Trị Đông'],
+            'Quận 12': ['Thạnh Lộc', 'Thạnh Xuân', 'Thới An', 'Hiệp Thành', 'An Phú Đông'],
+            'Hải Châu': ['Hải Châu I', 'Hải Châu II', 'Hải Châu III'],
+            'Thanh Khê': ['Thanh Khê Đông', 'Thanh Khê Tây', 'An Khê'],
+            'Sơn Trà': ['Mân Thái', 'Nại Hiên Đông', 'Nại Hiên Tây']
+};
+
+        window.onload = function() {
+            const provinceSelect = document.getElementById('modal-user-container-content-province');
+            const districtSelect = document.getElementById('modal-user-container-content-district');
+            const wardSelect = document.getElementById('modal-user-container-content-ward');
+
+        // Thêm tỉnh (thành phố)
+        provinces.forEach(province => {
+            const option = document.createElement('option');
+            option.value = province;
+            option.textContent = province;
+            provinceSelect.appendChild(option);
+        });
+
+        // Xử lý thay đổi tỉnh (thành phố)
+        provinceSelect.addEventListener('change', function() {
+            const selectedProvince = this.value;
+            districtSelect.innerHTML = '<option value="">Chọn quận (huyện)</option>';
+            wardSelect.innerHTML = '<option value="">Chọn phường (xã, thị trấn)</option>';
+
+            if (selectedProvince) {
+                districts[selectedProvince].forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            }
+        });
+
+        // Xử lý thay đổi quận (huyện)
+        districtSelect.addEventListener('change', function() {
+            const selectedDistrict = this.value;
+            wardSelect.innerHTML = '<option value="">Chọn phường (xã, thị trấn)</option>';
+
+            if (selectedDistrict) {
+            wards[selectedDistrict].forEach(ward => {
+                const option = document.createElement('option');
+                option.value = ward;
+                option.textContent = ward;
+                wardSelect.appendChild(option);
+                });
+            }
+        });
+        };
     </script>
 </div>
 

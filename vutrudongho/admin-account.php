@@ -19,7 +19,7 @@
         $id = $_POST['AdminID'];
         $fullname = trim($_POST['FullName']);
         $email = trim($_POST['Email']);
-        $password = trim($_POST['Password']);
+        $password = sha1(trim($_POST['Password']));
 
         $result = mysqli_query($con, "update `admin` 
                                       set `FullName` = '{$fullname}', `Email` = '{$email}', `Password` = '{$password}' 
@@ -67,7 +67,7 @@
                 <label for="Password">Mật khẩu</label>
                 <input name="Password" id="Password" type="text" value="<?= $_SESSION['Password'] ?>">
             </div>
-            <p style="display: none;" class="err admin-password"></p>
+            <p style="display: none;"></p>
         </div>
         <div class="admin-account__edit">
             <button type="submit" name="submit" class="admin-account-edit__btn">Lưu thay đổi</button>

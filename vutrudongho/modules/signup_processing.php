@@ -1,106 +1,87 @@
 <?php
-$fullName = $_REQUEST['fullName'];
-$email = $_REQUEST['email'];
-$numberPhone = $_REQUEST['numberPhone'];
-$passWord = $_REQUEST['passWord'];
-$repeatPassWord = $_REQUEST['repeatPassword'];
-$tinh = $_REQUEST['tinh'];
-$quanHuyen = $_REQUEST['quanHuyen'];
-$phuongXa = $_REQUEST['phuongXa'];
-$diaChiNha = $_REQUEST['diaChiNha'];
+session_start();
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-/* echo $fullName = $_REQUEST['fullName'];
-echo $email = $_REQUEST['email'];
-echo $numberPhone = $_REQUEST['numberPhone'];
-echo $passWord = $_REQUEST['passWord'];
-echo $repeatPassWord = $_REQUEST['repeatPassword'];
-echo $tinh = $_REQUEST['tinh'];
-echo $quanHuyen = $_REQUEST['quanHuyen'];
-echo $phuongXa = $_REQUEST['phuongXa'];
-echo $diaChiNha = $_REQUEST['diaChiNha']; */
+require __DIR__ . '/../../vendor/autoload.php'; // Đảm bảo rằng đường dẫn này đúng
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "vutrudongho";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    require '../db_connection.php'; // Kết nối với cơ sở dữ liệu
 
+    $fullName = $_POST['fullName'];
+    $phoneNumber = $_POST['numberPhone'];
+    $email = $_POST['email'];
+    $deliveryAddress = $_POST['deliveryAddress'];
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+    // Kiểm tra định dạng email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = 'Định dạng email không hợp lệ';
+        header("Location: ../signup.php");
+        exit;
+    }
+
+    // Kiểm tra nếu email đã tồn tại
+    $stmt = $conn->prepare("SELECT * FROM user WHERE Email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $_SESSION['error'] = 'Email đã tồn tại trong hệ thống';
+        header("Location: ../signup.php");
+        exit;
+    }
+    $stmt->close();
+
+    // Tạo mật khẩu ngẫu nhiên
+    $password = bin2hex(random_bytes(5)); // Mật khẩu 10 ký tự
+
+    // Hash mật khẩu với SHA-1
+    $hashedPassword = sha1($password);
+
+    // Lưu thông tin người dùng vào cơ sở dữ liệu
+    $stmt = $conn->prepare("INSERT INTO user (FullName, NumberPhone, Email, Password, HouseRoadAddress, Status) VALUES (?, ?, ?, ?, ?, 1)");
+    $stmt->bind_param('sssss', $fullName, $phoneNumber, $email, $hashedPassword, $deliveryAddress);
+
+    if ($stmt->execute()) {
+        // Gửi mật khẩu qua email
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'quangbinh261204@gmail.com'; // Địa chỉ email của bạn
+            $mail->Password = 'jait mxkg vpud aidn'; // Mật khẩu ứng dụng
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            $mail->setFrom('quangbinh261204@gmail.com', 'vutrudongho');
+            $mail->addAddress($email);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Mật khẩu đăng ký của bạn';
+            $mail->Body    = 'Mật khẩu đăng ký của bạn là: ' . $password;
+
+            $mail->send();
+
+            // Đăng nhập tự động sau khi đăng ký
+            $_SESSION['user_id'] = $stmt->insert_id;
+            $_SESSION['user_name'] = $fullName;
+            $_SESSION['user_email'] = $email;
+
+            header("Location: ../index.php"); // Chuyển hướng đến trang chủ
+            exit;
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'Không thể gửi mật khẩu qua email. Lỗi: ' . $mail->ErrorInfo;
+            header("Location: ../signup.php");
+            exit;
+        }
+    } else {
+        $_SESSION['error'] = 'Không thể lưu thông tin người dùng vào cơ sở dữ liệu';
+        header("Location: ../signup.php");
+        exit;
+    }
+
+    $stmt->close();
+    $conn->close();
 }
-
-$sqlPhoneNumber = "SELECT COUNT(*) as count FROM user WHERE NumberPhone = '$numberPhone'";
-$resultsqlPhoneNumber = mysqli_query($conn, $sqlPhoneNumber);
-$rowPhoneNumber = mysqli_fetch_assoc($resultsqlPhoneNumber);
-
-$sqlEmail = "SELECT COUNT(*) as count FROM user WHERE Email = '$email'";
-$resultsqlEmail = mysqli_query($conn, $sqlEmail);
-$rowEmail = mysqli_fetch_assoc($resultsqlEmail);
-
-//khai báo biến lưu lỗi
-$error = "";
-// Nếu số điện thoại đã tồn tại, hiển thị thông báo lỗi và yêu cầu người dùng nhập lại
-if (($rowPhoneNumber['count'] > 0 || $rowEmail['count'] > 0) ||($rowPhoneNumber['count'] >0 && $rowEmail['count']>0) ) {
-  if($rowPhoneNumber['count'] >0 && $rowEmail['count']>0){
-    $error = "Số điện thoại/Email đã tồn tại trong hệ thống, vui lòng nhập lại thông tin.";
-  }
-  elseif($rowPhoneNumber['count'] > 0){
-    $error = "Số điện thoại đã tồn tại trong hệ thống, vui lòng nhập lại thông tin.";
-  }
-  elseif($rowEmail['count'] > 0){
-    $error = "Email đã tồn tại trong hệ thống, vui lòng nhập lại thông tin.";
-  }
-  session_start();
-  $_SESSION['error'] = $error;
-  header("Location: ../../signup.php?error=" . urlencode($error));
-  exit();
-} else {
-  $sql2 = sprintf("SELECT COUNT(*)FROM user;");
-  $result2 = mysqli_query($conn, $sql2);
-  $rows2 = mysqli_fetch_assoc($result2); //1 dòng
-//echo ($rows2["COUNT(*)"]);
-  $countRowsUS = (int) $rows2["COUNT(*)"];
-  $userID = "US000001";
-  function checkQuantityUS()
-  {
-    global $countRowsUS;
-    global $userID;
-    // Tách "US" và "000001" ra
-    $userIDPrefix = substr($userID, 0, 2); // "US"
-    $userIDNumber = (int) substr($userID, 2); // 1
-
-    // Tính toán mã mới cho người dùng
-    $newUserIDNumber = $countRowsUS + 1;
-
-    // Định dạng lại thành chuỗi "000002"
-    $newUserIDNumberString = sprintf('%06d', $newUserIDNumber);
-
-    // Ghép lại "US" và "000002" thành "US000002"
-    $newUserID = $userIDPrefix . $newUserIDNumberString;
-
-    // Hiển thị kết quả
-    return $newUserID; // "US000002"
-
-  }
-  //var_dump(checkQuantityUS());
-
-  $sql = sprintf("INSERT INTO `user` (`UserID`, `FullName`, `NumberPhone`, `Email`, `Password`, `HouseRoadAddress`, `Ward`, `District`, `Province`, `Status`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',1);", checkQuantityUS(), $fullName, $numberPhone, $email, sha1($passWord), $diaChiNha, $phuongXa, $quanHuyen, $tinh);
-  if ($conn->query($sql) === TRUE) {
-    		
-    session_start();
-    $_SESSION['signupSuccess'] = true;
-
-    header('location: ../../login.php');
-
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-}
-
-
-mysqli_close($conn);
-
 ?>

@@ -18,10 +18,13 @@
     <link rel="stylesheet" href="assets/CSS/detail_product.css">
     <link rel="stylesheet" href="assets/CSS/header.css">
     <link rel="stylesheet" href="assets/CSS/footer.css">
+    <link rel="stylesheet" href="assets/CSS/popover.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="shortcut icon" href="assets/Img/logo.png" type="image/x-icon">
     <title><?php echo $product['ProductName'] ?></title>
 
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>    
+    <script type="text/javascript" language="javascript" src="assets/JS/zoom-img.js"></script>
 </head>
 <style>
     .material-symbols-outlined {
@@ -41,7 +44,7 @@
     </div>
     <div class="detail_container">
         <div class="detail_product">
-            <div class="product_img"><img src="assets/Img/productImg/<?php echo $product['ProductImg'] ?>" alt=""></div>
+            <div class="product_img"><figure><img src="assets/Img/productImg/<?php echo $product['ProductImg'] ?>" alt=""></figure></div>
             <div class="product_name">
                 <p class="product_title"><?php echo $product['ProductName'] ?></p>
                 <p class="product_price">

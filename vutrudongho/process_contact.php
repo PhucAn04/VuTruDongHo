@@ -5,7 +5,6 @@ $username = "root";
 $password = "";    
 $dbname = "vutrudongho";
 
-
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -29,9 +28,17 @@ $stmt->bind_param("ssss", $full_name, $email, $subject, $message);
 
 // Thực hiện câu lệnh
 if ($stmt->execute()) {
-    echo "Thông tin của bạn đã được gửi thành công.";
+    // Hiển thị thông báo và chuyển hướng
+    echo "<script>
+        alert('Thông tin của bạn đã được gửi thành công.');
+        window.location.href = 'contact.php';
+    </script>";
 } else {
-    echo "Lỗi khi gửi thông tin: " . $stmt->error;
+    // Hiển thị thông báo lỗi và chuyển hướng
+    echo "<script>
+        alert('Lỗi khi gửi thông tin: " . $stmt->error . "');
+        window.location.href = 'contact.php';
+    </script>";
 }
 
 // Đóng statement và kết nối

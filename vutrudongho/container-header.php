@@ -5,7 +5,7 @@
                     <div class="container-header-admin-account__avt"></div>
                     <div class="container-header-admin-account__info">
                         <div class="container-header-admin-account-info__name">
-                            <p class="container-header-admin-account-info-name__detail"><?= $_SESSION['FullName'] ?></p>
+                            <!-- <p class="container-header-admin-account-info-name__detail"><?= $_SESSION['FullName'] ?></p> -->
                             <span class="material-symbols-outlined">expand_more</span>
                         </div>
                         <p class="container-header-admin-account-info__pos">Quản trị viên</p>
