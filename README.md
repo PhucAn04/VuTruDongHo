@@ -10,7 +10,6 @@ Dự án này là một trang web quản lý việc kinh doanh các sản phẩm
 - Quản lý đơn hàng và theo dõi tình trạng giao hàng.
 - Quản lý sản phẩm, bao gồm thêm, sửa, xóa sản phẩm.
 - Thống kê dữ liệu về doanh số bán hàng và tổng hợp các thông tin quản lý.
-gggggggg 
 ## Công nghệ sử dụng
 
 Dự án được xây dựng bằng sử dụng các công nghệ và ngôn ngữ sau:
@@ -22,7 +21,7 @@ Dự án được xây dựng bằng sử dụng các công nghệ và ngôn ng�
 ## Cài đặt và chạy dự án
 
 1. **Clone Repository**: Sao chép (clone) dự án từ kho chứa (repository) GitHub về máy tính của bạn.
-   git clone [https://github.com/yourusername/your-project.git](https://github.com/thieuhoang2002/WEB2-PROJECT-VUTRUDONGHO.git)
+   git clone [https://github.com/yourusername/your-project.git](https://github.com/PhucAn04/VuTruDongHo.git)
 2. **Truy cập server MySQL với XAMPP**
    Cài đặt XAMPP (hoặc tương tự) trên máy tính của bạn nếu bạn chưa có.
    Khởi động XAMPP và đảm bảo rằng MySQL Server đang hoạt động.
@@ -30,9 +29,9 @@ Dự án được xây dựng bằng sử dụng các công nghệ và ngôn ng�
    Mở trình duyệt web và truy cập vào http://localhost/phpmyadmin.
    Tạo một cơ sở dữ liệu trống mới với tên là "vutrudongho".
 4. **Import dữ liệu**
-   Trong thư mục gốc của dự án, tìm thư mục "Database" và bạn sẽ thấy tệp "vutrudongho_version16052023_vovanhung.sql".
+   Trong thư mục gốc của dự án, tìm thư mục "Database" và bạn sẽ thấy tệp "vutrudongho.sql".
    Mở phpMyAdmin và chọn cơ sở dữ liệu "vutrudongho" mà bạn vừa tạo.
-   Nhấp vào tab "Import" và chọn tệp "vutrudongho_version16052023_vovanhung.sql" để import dữ liệu vào cơ sở dữ liệu.
+   Nhấp vào tab "Import" và chọn tệp "vutrudongho.sql" để import dữ liệu vào cơ sở dữ liệu.
 5. **Bật XAMPP và khởi chạy dự án**
    Khởi động lại XAMPP và đảm bảo rằng cả Apache và MySQL đều đang chạy.
    Mở trình duyệt và gõ http://localhost:3000 (hoặc URL tương ứng điều hướng tới project) để chạy dự án.
