@@ -1,4 +1,4 @@
-# Đồ án môn học: Lập trình web và ứng dụng nâng cao (Web 2 Project)
+# Đồ án môn học: Lập trình web
 
 ## Mô tả dự án
 
