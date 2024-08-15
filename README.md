@@ -10,7 +10,7 @@ Dự án này là một trang web quản lý việc kinh doanh các sản phẩm
 - Quản lý đơn hàng và theo dõi tình trạng giao hàng.
 - Quản lý sản phẩm, bao gồm thêm, sửa, xóa sản phẩm.
 - Thống kê dữ liệu về doanh số bán hàng và tổng hợp các thông tin quản lý.
-
+gggggggg 
 ## Công nghệ sử dụng
 
 Dự án được xây dựng bằng sử dụng các công nghệ và ngôn ngữ sau:
